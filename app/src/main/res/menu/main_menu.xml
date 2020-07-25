@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/set_camera_ip_menu_item"
         android:icon="@drawable/ic_baseline_linked_camera_24"
         android:title="@string/set_camera_ip" />
 </menu>

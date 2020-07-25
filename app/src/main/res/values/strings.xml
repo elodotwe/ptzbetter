@@ -2,4 +2,7 @@
     <string name="app_name">PTZ Better.</string>
     <string name="presets">Presets:</string>
     <string name="set_camera_ip">Set camera IP</string>
+    <string name="ip_popup_message">Enter camera IP address or hostname:</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>
