@@ -10,11 +10,9 @@ import androidx.preference.PreferenceManager
 
 class CameraModel(application: Application) : AndroidViewModel(application) {
     private val camIPSettingString = "CameraIPSetting"
-    private val propertyListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
-        Log.i("blah", "property changed $key")
+    private val propertyListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
         if (key == camIPSettingString) {
-            cameraIP.value = sharedPreferences.getString(camIPSettingString, null)
-            Log.i("blah", cameraIP.value)
+            cameraIP.value = currentCameraIP()
         }
     }
 
@@ -22,8 +20,12 @@ class CameraModel(application: Application) : AndroidViewModel(application) {
         PreferenceManager.getDefaultSharedPreferences(getApplication())
             .registerOnSharedPreferenceChangeListener(propertyListener)
         val data = MutableLiveData<String>()
-        data.value = PreferenceManager.getDefaultSharedPreferences(getApplication()).getString(camIPSettingString, null)
+        data.value = currentCameraIP()
         data
+    }
+
+    private fun currentCameraIP(): String? {
+        return PreferenceManager.getDefaultSharedPreferences(getApplication()).getString(camIPSettingString, null)
     }
 
     fun getCameraIP(): LiveData<String> {
@@ -32,5 +34,9 @@ class CameraModel(application: Application) : AndroidViewModel(application) {
 
     fun setCameraIP(newIP: String) {
         PreferenceManager.getDefaultSharedPreferences(getApplication()).edit().putString(camIPSettingString, newIP).apply()
+    }
+
+    fun goToPreset(preset: Int) {
+        Log.i("blah", "going to preset $preset")
     }
 }
