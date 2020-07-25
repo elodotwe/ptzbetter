@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PTZ Better.</string>
+    <string name="presets">Presets:</string>
+    <string name="set_camera_ip">Set camera IP</string>
+</resources>
