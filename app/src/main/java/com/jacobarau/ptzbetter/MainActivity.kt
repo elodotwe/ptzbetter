@@ -8,9 +8,18 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    val statusObserver = Observer<CameraStatus> { newValue ->
+        cameraStatus.text = when (newValue) {
+            CameraStatus.offline -> getString(R.string.camera_offline)
+            CameraStatus.online -> getString(R.string.camera_online)
+            else -> getString(R.string.camera_offline)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         preset6.setOnClickListener { model.goToPreset(6) }
         preset7.setOnClickListener { model.goToPreset(7) }
         preset8.setOnClickListener { model.goToPreset(8) }
+        model.cameraStatus.observe(this, statusObserver)
+        lifecycle.addObserver(model)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

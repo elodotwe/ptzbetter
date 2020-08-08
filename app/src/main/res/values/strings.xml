@@ -5,4 +5,6 @@
     <string name="ip_popup_message">Enter camera IP address or hostname:</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="camera_online">Online</string>
+    <string name="camera_offline">OFFLINE!</string>
 </resources>

@@ -125,4 +125,12 @@
         app:layout_constraintStart_toEndOf="@+id/preset7"
         app:layout_constraintTop_toTopOf="@+id/preset7" />
 
+    <TextView
+        android:id="@+id/cameraStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/camera_offline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
